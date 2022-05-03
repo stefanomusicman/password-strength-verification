@@ -1,14 +1,17 @@
+import { Fragment } from 'react'
 import type { NextPage } from 'next'
-import ParticlesBackground from '../ParticlesBackground/ParticlesBackground'
-// import Head from 'next/head'
-// import Image from 'next/image'
+import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import StrengthTester from '../Components/StrengthTester'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <ParticlesBackground />
-    </div>
+    <Fragment>
+      <div className={styles.main}>
+        <h1 className={styles.title}>Password Strength Tester</h1>
+        <StrengthTester />
+      </div>
+    </Fragment>
   )
 }
 
