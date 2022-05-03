@@ -6,18 +6,25 @@
 }
 
 .strengthBar {
+    position: relative;
     width: 50%;
     height: 5rem;
-    border: 0.2rem black solid;
+    border: 0.2rem hsl(298, 63%, 38%) solid;
     border-radius: 10rem;
     overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.filler {
-    width: 50%;
+.strengthBar::before {
+    content: '';
+    position: absolute;
+    left: 0;
     height: 100%;
-    background-color: aqua;
-    border-radius: 5rem;
+    width: calc(1% * var(--strength, 0));
+    background-color: hsl(298, 63%, 68%);
+    border-radius: 3rem;
+    transition: width 300ms;
 }
 
 .inputBar {
@@ -27,6 +34,13 @@
     text-align: center;
     font-size: 2rem;
     border-radius: 0.8rem;
+    background-color: hsl(298, 63%, 58%);
+    border: 1px solid hsl(298, 63%, 38%);
+    outline: none;
+}
+
+.inputBar:focus {
+    border: 1px solid hsl(298, 63%, 68%);
 }
 
 .feedback {
