@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './StrengthTester.module.css';
 
 // Criteria for password checks
@@ -13,6 +13,9 @@ const StrengthTester = () => {
     const [password, setPassword] = useState<string>('');
     const [feedback, setFeedback] = useState<any[]>([]);
 
+    // const strengthMeterRef: any = document.getElementById('strength-meter');
+    const strengthRef: any = useRef();
+
     //CHECK LENGTH
     function checkLength(str: string): any {
         const length: number = str.length;
@@ -24,7 +27,6 @@ const StrengthTester = () => {
             }
         }
     }
-    const lengthResult = checkLength(password);
 
     //CHECK FOR MIN 1 UPPERCASE LETTER
     function checkUppercase(str: string): any {
@@ -38,7 +40,6 @@ const StrengthTester = () => {
             }
         }
     }
-    const upperResult = checkUppercase(password);
 
     //CHECK FOR MIN 1 LOWERCASE LETTER
     function checkLowercase(str: string): any {
@@ -52,7 +53,6 @@ const StrengthTester = () => {
             }
         }
     }
-    const lowerResult = checkLowercase(password);
 
     //CHECK FOR MIN 1 SPECIAL CHAR
     function checkSpecialChar(str: string): any {
@@ -66,7 +66,6 @@ const StrengthTester = () => {
             }
         }
     }
-    const specialResult = checkSpecialChar(password);
 
     //CHECK FOR MIN 1 NUMBER
     function checkForNumber(str: string): any {
@@ -80,29 +79,39 @@ const StrengthTester = () => {
             }
         }
     }
-    const numberResult = checkForNumber(password);
 
     function handleAll(): void {
-        const weaknesses: any[] = []
-        weaknesses.push(lengthResult);
-        weaknesses.push(upperResult);
-        weaknesses.push(lowerResult);
-        weaknesses.push(specialResult);
-        weaknesses.push(numberResult);
-        setFeedback(weaknesses);
+        const weaknesses: any[] = [];
+        let strength = 100;
+        weaknesses.push(checkLength(password));
+        weaknesses.push(checkUppercase(password));
+        weaknesses.push(checkLowercase(password));
+        weaknesses.push(checkSpecialChar(password));
+        weaknesses.push(checkForNumber(password));
+        const filtered = weaknesses.filter(item => {
+            if(item !== undefined) {
+                return item
+            }
+        })
+        setFeedback(filtered);
+        filtered.forEach(item => {
+            strength -= item.penalty
+        });
+        strengthRef.current.style.setProperty('--strength', strength);
     }
 
     useEffect(() => {
         handleAll()
-        console.log(feedback);
     }, [password])
+
+    console.log(feedback);
 
     return(
         <div className={styles.primary}>
-            <div className={styles.strengthBar} />
+            <div className={styles.strengthBar} ref={strengthRef} />
             <input className={styles.inputBar} type='text' value={password} onChange={(e) => setPassword(e.target.value)}/>
             <div className={styles.feedback}>
-                {/* {feedback.map(item => )} */}
+                {feedback.map(item => <p key={Math.random()}>{item.message}</p>)}
             </div>
         </div>
     )

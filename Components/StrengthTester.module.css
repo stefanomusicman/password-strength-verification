@@ -47,4 +47,13 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.feedback p {
+    font-size: 1.5rem;
+    font-family: 'Titillium Web';
+    font-weight: bold;
+    color: hsl(299, 42%, 19%);
 }
