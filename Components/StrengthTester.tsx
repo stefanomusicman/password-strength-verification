@@ -13,7 +13,7 @@ const StrengthTester = () => {
     const [password, setPassword] = useState<string>('');
     const [feedback, setFeedback] = useState<any[]>([]);
 
-    // const strengthMeterRef: any = document.getElementById('strength-meter');
+    //GAINS ACCESS TO STRENGTH METER IN ORDER TO APPEND CSS VARIABLE BELOW IN handleAll() FUNCTION
     const strengthRef: any = useRef();
 
     //CHECK LENGTH
@@ -30,8 +30,8 @@ const StrengthTester = () => {
 
     //CHECK FOR MIN 1 UPPERCASE LETTER
     function checkUppercase(str: string): any {
-        const regex = /[A-Z]/;
-        const result = regex.test(str);
+        const regex: RegExp = /[A-Z]/;
+        const result: boolean = regex.test(str);
 
         if(result === false) {
             return {
@@ -43,8 +43,8 @@ const StrengthTester = () => {
 
     //CHECK FOR MIN 1 LOWERCASE LETTER
     function checkLowercase(str: string): any {
-        const regex = /[a-z]/;
-        const result = regex.test(str);
+        const regex: RegExp = /[a-z]/;
+        const result: boolean = regex.test(str);
 
         if(result === false) {
             return {
@@ -56,8 +56,8 @@ const StrengthTester = () => {
 
     //CHECK FOR MIN 1 SPECIAL CHAR
     function checkSpecialChar(str: string): any {
-        const regex = /[~!@#$%^&*_+}{\?><]/;
-        const result = regex.test(str);
+        const regex: RegExp = /[~!@#$%^&*_+}{\?><]/;
+        const result: boolean = regex.test(str);
 
         if(result === false) {
             return {
@@ -69,8 +69,8 @@ const StrengthTester = () => {
 
     //CHECK FOR MIN 1 NUMBER
     function checkForNumber(str: string): any {
-        const regex = /[0-9]/;
-        const result = regex.test(str);
+        const regex: RegExp = /[0-9]/;
+        const result: boolean = regex.test(str);
 
         if(result === false) {
             return {
@@ -80,9 +80,10 @@ const StrengthTester = () => {
         }
     }
 
+    //CHECK EVERYTHING AND DETERMINE STRENGTH AND FEEBACK
     function handleAll(): void {
         const weaknesses: any[] = [];
-        let strength = 100;
+        let strength: number = 100;
         weaknesses.push(checkLength(password));
         weaknesses.push(checkUppercase(password));
         weaknesses.push(checkLowercase(password));
@@ -100,11 +101,10 @@ const StrengthTester = () => {
         strengthRef.current.style.setProperty('--strength', strength);
     }
 
+    //SET TO RUN EVERYTIME PASSWORD INPUT CHANGES
     useEffect(() => {
         handleAll()
     }, [password])
-
-    console.log(feedback);
 
     return(
         <div className={styles.primary}>
