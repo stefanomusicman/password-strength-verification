@@ -6,6 +6,7 @@
 }
 
 .title {
-  color: hsl(299, 42%, 19%);
+  color: black;
   font-family: 'Titillium Web';
+  font-size: 2.5rem;
 }

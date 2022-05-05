@@ -22,7 +22,7 @@
     left: 0;
     height: 100%;
     width: calc(1% * var(--strength, 0));
-    background-color: hsl(298, 63%, 68%);
+    background-color: hsl(298, 63%, 38%);
     border-radius: 3rem;
     transition: width 300ms;
 }
@@ -34,7 +34,7 @@
     text-align: center;
     font-size: 2rem;
     border-radius: 0.8rem;
-    background-color: hsl(298, 63%, 58%);
+    background-color: hsl(298, 63%, 38%);
     border: 1px solid hsl(298, 63%, 38%);
     outline: none;
 }
@@ -55,5 +55,5 @@
     font-size: 1.5rem;
     font-family: 'Titillium Web';
     font-weight: bold;
-    color: hsl(299, 42%, 19%);
+    color: black;
 }
