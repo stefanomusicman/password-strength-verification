@@ -17,7 +17,7 @@ const StrengthTester = () => {
     const strengthRef: any = useRef();
 
     //CHECK LENGTH
-    function checkLength(str: string): any {
+    function checkLength(str: string): object | undefined {
         const length: number = str.length;
 
         if(length < 8) {
@@ -29,7 +29,7 @@ const StrengthTester = () => {
     }
 
     //CHECK FOR MIN 1 UPPERCASE LETTER
-    function checkUppercase(str: string): any {
+    function checkUppercase(str: string): object | undefined {
         const regex: RegExp = /[A-Z]/;
         const result: boolean = regex.test(str);
 
@@ -42,7 +42,7 @@ const StrengthTester = () => {
     }
 
     //CHECK FOR MIN 1 LOWERCASE LETTER
-    function checkLowercase(str: string): any {
+    function checkLowercase(str: string): object | undefined {
         const regex: RegExp = /[a-z]/;
         const result: boolean = regex.test(str);
 
@@ -55,7 +55,7 @@ const StrengthTester = () => {
     }
 
     //CHECK FOR MIN 1 SPECIAL CHAR
-    function checkSpecialChar(str: string): any {
+    function checkSpecialChar(str: string): object | undefined {
         const regex: RegExp = /[~!@#$%^&*_+}{\?><]/;
         const result: boolean = regex.test(str);
 
@@ -68,7 +68,7 @@ const StrengthTester = () => {
     }
 
     //CHECK FOR MIN 1 NUMBER
-    function checkForNumber(str: string): any {
+    function checkForNumber(str: string): object | undefined {
         const regex: RegExp = /[0-9]/;
         const result: boolean = regex.test(str);
 
