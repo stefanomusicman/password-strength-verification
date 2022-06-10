@@ -43,6 +43,21 @@
     border: 1px solid hsl(298, 63%, 68%);
 }
 
+.inputBar::placeholder {
+    color: black;
+    opacity: 1;
+}
+
+/* Internet Explorer */
+.inputBar:-ms-input-placeholder {
+    color: black;
+}
+
+/* Microsoft Edge */
+.inputBar::-ms-input-placeholder {
+    color: black;
+}
+
 .feedback {
     display: flex;
     flex-direction: column;

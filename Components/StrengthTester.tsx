@@ -109,7 +109,7 @@ const StrengthTester = () => {
     return(
         <div className={styles.primary}>
             <div className={styles.strengthBar} ref={strengthRef} />
-            <input className={styles.inputBar} type='text' value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <input placeholder='Enter Password Here' className={styles.inputBar} type='text' value={password} onChange={(e) => setPassword(e.target.value)}/>
             <div className={styles.feedback}>
                 {feedback.map(item => <p key={Math.random()}>{item.message}</p>)}
             </div>
